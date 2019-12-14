@@ -17,10 +17,14 @@ class ViewController: UIViewController {
     var activatedButtons = [UIButton]()
     var solutions = [String]()
     
+    var correctAnswers = 0
     var score = 0 {
+        
         didSet {
+            if score < 0 {score = 0}
             scoreLabel.text = "Score: \(score)"
-        }
+            }
+        
     }
     var level = 1
     
@@ -166,8 +170,9 @@ class ViewController: UIViewController {
             
             currentAnswer.text = ""
             score += 1
+            correctAnswers += 1
             
-            if score % 7 == 0 {
+            if correctAnswers % 7 == 0 {
                 let ac = UIAlertController(title: "Well done!", message: "Are you ready for the next level", preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "Lets go!", style: .default, handler: levelUp))
                 present(ac, animated: true)
@@ -182,9 +187,8 @@ class ViewController: UIViewController {
                    for button in activatedButtons {
                        button.isHidden = false
                    }
-            
-            
-                }
+            score -= 1
+            }
         }
     
     func levelUp(action: UIAlertAction) {
