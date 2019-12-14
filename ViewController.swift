@@ -118,6 +118,7 @@ class ViewController: UIViewController {
         let width = 150
         let height = 80
         
+        //add thin grey line somewhere here
         for row in 0..<4 {
             for column in 0..<5{
                 let letterButton = UIButton(type: .system)
@@ -130,6 +131,7 @@ class ViewController: UIViewController {
                 buttonsView.addSubview(letterButton)
                 letterButtons.append(letterButton)
             }
+            
         }
         
        
