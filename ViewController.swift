@@ -159,7 +159,7 @@ class ViewController: UIViewController {
         
         if let solutionPosition = solutions.firstIndex(of: answerText) {
             activatedButtons.removeAll()
-            
+                        
             var splitAnswers = answersLabel.text?.components(separatedBy: "\n")
             splitAnswers?[solutionPosition] = answerText
             answersLabel.text = splitAnswers?.joined(separator: "\n")
@@ -171,9 +171,22 @@ class ViewController: UIViewController {
                 let ac = UIAlertController(title: "Well done!", message: "Are you ready for the next level", preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "Lets go!", style: .default, handler: levelUp))
                 present(ac, animated: true)
+                
             }
+            
+        }else {
+            let ac = UIAlertController(title: "Incorrect", message: nil, preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "Okay", style: .default))
+                    present (ac, animated: true)
+            currentAnswer.text = ""
+                   for button in activatedButtons {
+                       button.isHidden = false
+                   }
+            
+            
+                }
         }
-    }
+    
     func levelUp(action: UIAlertAction) {
         level += 1
         
