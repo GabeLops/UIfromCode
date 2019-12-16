@@ -238,16 +238,17 @@ class ViewController: UIViewController {
             }
         }
         DispatchQueue.main.async {
-            self.cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
-            self.answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
+            [weak self]  in
+            self?.cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
+            self?.answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
         
         
         
-            self.letterButtons.shuffle()
+            self?.letterButtons.shuffle()
         
-            if self.letterButtons.count == letterBits.count {
-                for i in 0..<self.letterButtons.count {
-                    self.letterButtons[i].setTitle(letterBits[i], for: .normal)
+            if self?.letterButtons.count == letterBits.count {
+                for i in 0..<self!.letterButtons.count {
+                    self?.letterButtons[i].setTitle(letterBits[i], for: .normal)
             }
         }
     }
