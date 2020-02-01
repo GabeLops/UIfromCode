@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var cluesLabel: UILabel!
+    
     var answersLabel: UILabel!
     var currentAnswer: UITextField!
     var scoreLabel: UILabel!
@@ -155,7 +156,11 @@ class ViewController: UIViewController {
         
         currentAnswer.text = currentAnswer.text?.appending(buttonTitle)
         activatedButtons.append(sender)
-        sender.isHidden = true
+       
+        UIView.animate(withDuration: 1, delay: 0, options: [], animations: {
+            sender.alpha = 0
+        })
+        {finished in sender.isHidden = true}
         }
     
     @objc func submitTapped(_ sender: UIButton) {
